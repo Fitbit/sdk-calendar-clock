@@ -1,13 +1,3 @@
-console.log("Hello world!");
-// basic clock
-// show next appointment title.substr, location,/in 1 day/hours/mins
-
-/*
-Meeting with blah blah blah
-at BUH-q3wewe
-in 3 hours (12:15pm)
-*/
-
 import document from "document";
 
 import * as appointment from "./appointment";
