@@ -28,7 +28,6 @@ function renderAppointment() {
     }`;
   } else {
     title.text = "No appointments";
-    location.text = "";
-    date.text = "";
+    details.text = "";
   }
 }
