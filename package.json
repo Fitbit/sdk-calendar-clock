@@ -1,0 +1,33 @@
+{
+  "name": "sdk-calendar-clock",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "@fitbit/sdk": "~4.1.0",
+    "@fitbit/sdk-cli": "^1.7.1"
+  },
+  "fitbit": {
+    "appUUID": "24855175-1a50-42f2-8178-019cb091a886",
+    "appType": "clockface",
+    "appDisplayName": "SDK Calendar Clock",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#ffffff",
+    "requestedPermissions": [
+      "access_calendar",
+      "run_background"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson",
+      "gemini",
+      "mira"
+    ],
+    "i18n": {},
+    "defaultLanguage": "en-US"
+  },
+  "scripts": {
+    "build": "fitbit-build",
+    "debug": "fitbit"
+  }
+}
