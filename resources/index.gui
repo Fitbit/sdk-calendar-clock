@@ -1,0 +1,6 @@
+<svg>
+  <rect id="background" />
+  <text id="time">13:37</text>
+  <text id="title">Appointment Title</text>
+  <textarea id="details">Appointment Date @ Appointment Location</textarea>
+</svg>
