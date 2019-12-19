@@ -12,8 +12,7 @@ companion.addEventListener("wakeinterval", refreshData);
 refreshData();
 
 function refreshData() {
-  let dataCalendars = [],
-    dataEvents = [];
+  let dataEvents = [];
 
   calendars
     .searchSources()
@@ -21,22 +20,12 @@ function refreshData() {
       return calendars.searchCalendars();
     })
     .then(results => {
-      results.forEach(calendar => {
-        // console.log(
-        //   `> calendar: ${calendar.title} (${calendar.sourceId}/${calendar.id})`
-        // );
-        dataCalendars.push(calendar);
-      });
-
       // Filter events to 48hr window
-      const start = new Date();
-      const end = new Date();
-      start.setHours(0, 0, 0, 0);
-      end.setHours(128, 59, 59, 999);
-      const eventsQuery = {
-        startDate: start,
-        endDate: end
-      };
+      const startDate = new Date();
+      const endDate = new Date();
+      startDate.setHours(0, 0, 0, 0);
+      endDate.setHours(128, 59, 59, 999);
+      const eventsQuery = { startDate, endDate };
 
       return calendars.searchEvents(eventsQuery);
     })

@@ -38,26 +38,27 @@ export function timeUntil(date) {
   );
 
   if (days > 0) {
-    return `in ${days} day${pluralize(days)}`;
+    return `in ${days} ${pluralize(days, "day")}`;
   }
 
   if (hours > 0) {
-    return `in ${hours}hr${pluralize(hours)}${
-      hours < 3 && minutes > 0 ? ` ${minutes}min${pluralize(minutes)}` : ""
+    return `in ${hours}${pluralize(hours, "hr")}${
+      hours < 3 && minutes > 0 ? ` ${minutes}${pluralize(minutes, "min")}` : ""
     }`;
   }
 
   if (minutes > 0) {
-    return `in ${minutes}min${pluralize(minutes)}`;
+    return `in ${minutes}${pluralize(minutes, "min")}`;
   }
 
   return "Now";
 }
 
 /**
- * Returns an `s` if the number is plural
+ * Pluralizes the units if required
  * @param {Number} number
+ * @param {String} unit
  */
-function pluralize(number) {
-  return number === 1 ? "" : "s";
+function pluralize(number, unit) {
+  return number === 1 ? unit : `${unit}s`;
 }

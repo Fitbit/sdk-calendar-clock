@@ -4,8 +4,7 @@ import { readFileSync } from "fs";
 import { dataFile, dataType } from "../common/constants";
 import { toEpochSec } from "../common/utils";
 
-let data = {};
-let cb;
+let data, cb;
 
 export function initialize(callback) {
   cb = callback;
@@ -59,7 +58,7 @@ function loadData() {
 }
 
 function existsData() {
-  if (Object.keys(data).length === 0 && data.constructor === Object) {
+  if (data === undefined) {
     console.warn("Appointment: No data found.");
     return false;
   }
