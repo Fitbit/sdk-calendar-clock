@@ -4,15 +4,15 @@ import { readFileSync } from "fs";
 import { dataFile, dataType } from "../common/constants";
 import { toEpochSec } from "../common/utils";
 
-let data, cb;
+let data;
+let handleCalendarUpdatedCallback;
 
 export function initialize(callback) {
-  cb = callback;
+  handleCalendarUpdatedCallback = callback;
   data = loadData();
-  updatedData();
-
-  fileHandler();
   inbox.addEventListener("newfile", fileHandler);
+  fileHandler();
+  updatedData();
 }
 
 export function next() {
@@ -22,7 +22,7 @@ export function next() {
       return !event.isAllDay;
     });
 
-    if (events && events.length > 0) {
+    if (events.length > 0) {
       const currentDate = toEpochSec(new Date());
 
       // Get all future events
@@ -30,7 +30,7 @@ export function next() {
         return event.startDate > currentDate;
       });
 
-      if (futureEvents && futureEvents.length > 0) {
+      if (futureEvents.length > 0) {
         // Get the first future appointment
         return futureEvents[0];
       }
@@ -66,7 +66,7 @@ function existsData() {
 }
 
 function updatedData() {
-  if (typeof cb === "function" && existsData()) {
-    cb();
+  if (typeof handleCalendarUpdatedCallback === "function" && existsData()) {
+    handleCalendarUpdatedCallback();
   }
 }

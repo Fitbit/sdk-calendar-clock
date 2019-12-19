@@ -2,11 +2,11 @@ import clock from "clock";
 import { preferences } from "user-settings";
 import * as util from "../common/utils";
 
-let cb;
+let handleClockTickCallback;
 
 export function initialize(granularity, callback) {
   clock.granularity = granularity ? granularity : "minutes";
-  cb = callback;
+  handleClockTickCallback = callback;
   clock.addEventListener("tick", tick);
 }
 
@@ -23,7 +23,7 @@ export function tick(evt) {
     hours = util.zeroPad(hours);
   }
 
-  if (typeof cb === "function") {
-    cb({ time: `${hours}:${mins}` });
+  if (typeof handleClockTickCallback === "function") {
+    handleClockTickCallback({ time: `${hours}:${mins}` });
   }
 }
