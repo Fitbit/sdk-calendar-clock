@@ -23,8 +23,8 @@ function renderAppointment() {
   let event = appointment.next();
   if (event) {
     title.text = event.title.substr(0, 20);
-    details.text = `${timeUntil(fromEpochSec(event.startDate))} @ ${
-      event.location
+    details.text = `${timeUntil(fromEpochSec(event.startDate))} ${
+      event.location ? `@ ${event.location}` : ""
     }`;
   } else {
     title.text = "No appointments";
