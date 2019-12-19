@@ -53,7 +53,7 @@ function loadData() {
     return readFileSync(`/private/data/${dataFile}`, dataType);
   } catch (ex) {
     console.error(`Appointment: loadData() failed. ${ex}`);
-    return {};
+    return;
   }
 }
 
